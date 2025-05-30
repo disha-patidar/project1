@@ -94,3 +94,6 @@ background-color: white;
   padding-left: 0;
   padding-right: 0;
 }
+.card-main{
+  border: 0.5px solid rgb(151, 151, 151);
+}

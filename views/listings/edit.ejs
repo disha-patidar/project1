@@ -3,20 +3,25 @@
     <div class="col-8 offset-2">
    <h3>Edit your Listing</h3>
    <br/>
-  <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" cl;ass="needs-validation">
+  <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" class="needs-validation">
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
 <br/>
 <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required>
+<div class="valid-feedback">
+      Looks good!
+    </div>
     </div>
 <div class="mb-3">
   <label for="description" class="form-label">Description</label>
   <br/>
 <textarea name="listing[description]" class="form-control" required><%= listing.description %></textarea>
+<div class="invalid-feedback">Please enter the description</div>
 </div>
 <div class="mb-3">
    <label for="location" class="form-label" >Location</label>
 <input name="listing[location]" value="<%= listing.location%>"  type="text" class="form-control" required>
+ <div class="invalid-feedback">Please enter the location</div>
 </div>
 <div class="row">
 <div class="mb-3 col-md-4">
