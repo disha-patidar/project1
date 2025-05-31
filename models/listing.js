@@ -10,9 +10,8 @@ const listingSchema=new Schema({
     type:String,
   },
   image:{
-    type:String,
-    default:"models/photo-1599302592205-d7d683c83eea.jpg",
-   set:(v) => v==="" ? "models/photo-1599302592205-d7d683c83eea.jpg":v,
+    url:String,
+    filename:String,
   },
   price:{
     type:Number,

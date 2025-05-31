@@ -1,3 +1,10 @@
+if(process.env.NODE_ENV!="production"){
+require('dotenv').config();
+}
+
+
+console.log(process.env.SECRET);
+
 const express=require("express");
 const app=express();
 const mongoose=require("mongoose");
@@ -17,6 +24,7 @@ const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const User=require("./models/user.js");
 const userRouter=require("./routes/user.js");
+const  { validateReview, isLoggedIn,isReviewAuthor }=require("./middleware.js");
 
 //create database
 const MONGO_URL="mongodb://127.0.0.1:27017/wanderlust";
@@ -41,7 +49,7 @@ const sessionOptions={
   saveUninitialized:true
 };
 
-
+/*
 const validateListing=(req,res,next) =>{
   let {error}=listingSchema.validate(req.body);
   if(error){
@@ -62,7 +70,7 @@ const validateListing=(req,res,next) =>{
   else{
     next();
   }  
-};
+};*/
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -100,7 +108,7 @@ app.get("/",(req,res) =>{
 
 
 // index route
-app.get("/listings", wrapAsync (async(req,res)=> {
+/*app.get("/listings", wrapAsync (async(req,res)=> {
   const allListings=await Listing.find({});
   res.render("listings/index", { allListings });
 //res.render("../views/listings/index.ejs", {allListings});
@@ -133,7 +141,7 @@ app.post("/listings/new", validateListing,wrapAsync(async(req, res, next) => {
   console.log(result);
   if(result.error){
     throw new ExpressError(400,result.error);
-  }*/
+  }
     const newListing = new Listing(req.body.listing);
     await newListing.save();
     res.redirect("/listings");
@@ -169,7 +177,7 @@ app.delete("/listings/:id", wrapAsync (async (req, res) => {
   }
   console.log("Deleted:", deletedListing);
   res.redirect("/listings");
-} ));
+} ));*/
 
 app.all('/{any}', (req,res,next) =>{
 next(new ExpressError(404,"Page not found!"));
