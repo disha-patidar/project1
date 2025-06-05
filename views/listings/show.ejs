@@ -1,5 +1,9 @@
 
   <% layout("/layouts/boilerplate") %>
+  <script>
+    const coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
+   
+  </script>
 
 <div class="row">
   <div class="col-8 offset-3">
@@ -8,7 +12,7 @@
 
   <div class="card col-6 offset-3 show-cards mt-3">
     <div class="card" style="width: 18rem;">
-      <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing_image">
+      <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
       <div class="card-body">
         <p class="card-text">Owned By <i><%= listing.owner ? listing.owner.username : 'unknown-user' %></i></p>
         <p class="card-text"><%= listing.title %></p>
@@ -89,8 +93,13 @@
         <p>No reviews available for this listing.</p>
       <% } %>
     </div>
+  <hr>
+    <div id="col-8 offset-3 mt-3">
+      <h3>Where you'll be</h3>
+      <div id="map"></div>
+    </div>
   </div> 
-
 </div>
 
-<script src="/js/script.js"></script>
+
+<script src="/js/map.js"></script>

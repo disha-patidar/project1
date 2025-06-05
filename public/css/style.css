@@ -97,3 +97,7 @@ background-color: white;
 .card-main{
   border: 0.5px solid rgb(151, 151, 151);
 }
+#map { 
+  height:400px;
+  width:40vw;
+ }
