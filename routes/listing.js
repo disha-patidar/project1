@@ -59,17 +59,17 @@ router.delete(
 );
 router.get("/search", async (req, res) => {
   const { q } = req.query;
-
   if (!q) {
-    req.flash("error", "Search query cannot be empty!");
+    req.flash("error", "Search term missing!");
     return res.redirect("/listings");
   }
 
-  const regex = new RegExp(q, "i"); // case-insensitive regex
-  const results = await Listing.find({
-    $or: [{ title: regex }, { location: regex }],
+  const regex = new RegExp(q, "i");
+
+  const listings = await Listing.find({
+    $or: [{ title: regex }, { location: regex }, { country: regex }],
   });
 
-  res.render("listings/index", { allListings: results });
+  res.render("listings/index", { allListings: listings });
 });
 module.exports = router;
