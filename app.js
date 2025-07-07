@@ -96,7 +96,7 @@ app.use((req, res, next) => {
 
 // Root route (health check)
 app.get("/", (req, res) => {
-  res.send("YelpCamp is live! 🚀");
+  res.send("/listings");
 });
 
 // Routes
