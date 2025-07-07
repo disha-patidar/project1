@@ -135,7 +135,7 @@ app.delete(
 );
 
 // 404 handler
-app.all("*", (req, res, next) => {
+app.all("/{any}", (req, res, next) => {
   console.warn("[404] Route not found:", req.originalUrl);
   next(new ExpressError(404, "Page not found!"));
 });
