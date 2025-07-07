@@ -1,13 +1,16 @@
 
+<% layout('layouts/boilerplate') %>
 
-<% layout("/layouts/boilerplate") %>
-<div class="row">
-  <div class="alert alert-danger col-6 offset-3" role="alert">
+<div class="row mt-5">
+  <div class="alert alert-danger col-6 offset-3 text-center" role="alert">
     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:">
       <use xlink:href="#exclamation-triangle-fill"/>
     </svg>
-    <h4 class="alert-heading">
+    <h4 class="alert-heading mt-2">
       <%= err.message || "Something went wrong!" %>
     </h4>
+    <% if (err.statusCode) { %>
+      <p>Status: <%= err.statusCode %></p>
+    <% } %>
   </div>
 </div>
